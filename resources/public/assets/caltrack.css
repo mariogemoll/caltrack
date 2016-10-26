@@ -1,0 +1,42 @@
+.headernav, .header {
+  border-bottom: 1px solid #333;
+}
+
+.headernav {
+  margin-top: 20px;
+  position: relative;
+}
+
+.headernav h2 {
+  font-size: 20px;
+  color: #D82B2B;
+}
+
+.headernav ul {
+  list-style: none;
+  text-align: right;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 8px 0 0 0;
+}
+
+.headernav ul li {
+  display: inline;
+  margin: 10px 0 0 10px;
+}
+
+.narrow-centered {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.footer {
+  margin: 50px 0 30px 0;
+  border-top: 1px solid #ddd;
+  text-align: center;
+}
+
+.footer a {
+  color: #aaa;
+}

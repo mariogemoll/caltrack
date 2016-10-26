@@ -1,0 +1,17 @@
+#query {
+  border-top: 1px solid #000;
+}
+
+#query table input {
+  width: 100px;
+  margin-right: 10px
+}
+
+#query table {
+  margin-bottom: 10px;
+}
+
+.date-separator {
+  background-color: #eee;
+  font-weight: 700;
+}
