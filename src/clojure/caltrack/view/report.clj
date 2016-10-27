@@ -19,11 +19,14 @@
        [:table
         [:tr
          [:td
-          [:label "From"]
-          [:input#from.form-control {:type "text" :name "from"}]]
+          [:label {:for "from"} "From"]]
          [:td
-          [:label "To"]
-          [:input#to.form-control {:type "text" :name "to"}]]]]
+          [:input#from.form-control {:type "date" :name "from"}]]]
+        [:tr
+         [:td
+          [:label "To"]]
+         [:td
+          [:input#to.form-control {:type "date" :name "to"}]]]]
        [:input {:class "btn btn-primary" :type "submit" :value "Update"}]]]
      [:div#list.col-md-9
       [:table#entries.table

@@ -2,9 +2,12 @@
   border-top: 1px solid #000;
 }
 
+#query table label {
+  margin-right: 30px;
+}
+
 #query table input {
-  width: 100px;
-  margin-right: 10px
+  margin: 0 0 10px 0;
 }
 
 #query table {
