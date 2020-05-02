@@ -30,7 +30,9 @@ function handleJson(err, obj) {
   var events, groupedEvents, tbody, tr, hhmm, totalTime;
   events = obj.events.map((e) => {
     e.date = e.start.substring(0,10);
-    e.start = new Date(e.start);
+    var startDate = new Date(e.start);
+    e.date = t.yyyymmddDashed(startDate);
+    e.start = new Date(startDate);
     e.end = new Date(e.end);
     e.duration = e.end - e.start;
     var firstSpacePos = e.title.indexOf(' ');
@@ -47,8 +49,19 @@ function handleJson(err, obj) {
   groupedEvents = nest()
     .key((e) => e.date)
     .rollup((events) => {
+      var total = 0;
+      var projects = {};
+      for (var i = 0; i < events.length; i++) {
+        var e = events[i];
+        total += e.duration;
+        if (projects[e.project] === undefined) {
+          projects[e.project] = 0;
+        }
+        projects[e.project] += e.duration;
+      }
       return {
-        total: events.map(function (e) { return e.duration; }).reduce(sum),
+        total: total,
+        projects: projects,
         events: events
       };
     })
@@ -64,7 +77,13 @@ function handleJson(err, obj) {
     .classed('date-separator', true)
     .append('td')
     .attr('colspan', 4)
-    .text((group) => group.key + ' : ' + t.humanTime(group.value.total));
+    .text((group) => {
+      var projects = Object.keys(group.value.projects);
+      projects.sort();
+      var projectTotals = projects.map((p) => p + ' ' + t.humanTime(group.value.projects[p]));
+      var summary = '(' + projectTotals.join(', ') + ')';
+      return group.key + ' : ' + t.humanTime(group.value.total) + ' ' + summary;
+    });
 
   tr = tbody.selectAll('tr.entry')
     .data((group) => group.value.events)

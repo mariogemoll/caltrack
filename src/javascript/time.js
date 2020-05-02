@@ -18,7 +18,7 @@ export function humanTime(milliseconds) {
 };
 
 /**
- * Creates a Date object at 0:00:00 on the date "dd-mm-yyyy"
+ * Creates a Date object at 00:00:00 on the date "dd-mm-yyyy"
  * @param {string} date - The date as "dd-mm-yyyy"
  */
 export function startOfDay(date) {
@@ -44,7 +44,7 @@ export function endOfDay(date) {
 }
 
 /**
- * Creates a Date object at 0:00:00 on last Monday
+ * Creates a Date object at 00:00:00 on last Monday
  */
 export function startOfLastMonday() {
   var noon = new Date(),
