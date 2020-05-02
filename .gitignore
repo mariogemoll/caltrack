@@ -14,5 +14,6 @@ pom.xml.asc
 .hgignore
 .hg/
 node_modules
+package-lock.json
 resources/public/assets/bootstrap
 resources/public/assets/*.min.js
