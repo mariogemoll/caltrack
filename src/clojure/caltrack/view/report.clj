@@ -34,4 +34,5 @@
         [:tr
          [:th "Timespan"]
          [:th "Duration"]
-         [:th "Task"]]]]]]]))
+         [:th "Project"]
+         [:th "Description"]]]]]]]))

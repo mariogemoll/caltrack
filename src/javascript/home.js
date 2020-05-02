@@ -10,7 +10,6 @@ function make(tagName) {
 
 var loginForm = el('login-form');
 
-console.log(loginForm);
 loginForm.onsubmit = handleFormSubmit;
 
 function handleFormSubmit() {

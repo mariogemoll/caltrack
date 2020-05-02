@@ -33,6 +33,14 @@ function handleJson(err, obj) {
     e.start = new Date(e.start);
     e.end = new Date(e.end);
     e.duration = e.end - e.start;
+    var firstSpacePos = e.title.indexOf(' ');
+    if (firstSpacePos === -1) {
+      e.project = e.title;
+      e.description = '';
+    } else {
+      e.project = e.title.substr(0, firstSpacePos);
+      e.description = e.title.substr(firstSpacePos + 1);
+    }
     return e;
   });
 
@@ -65,7 +73,8 @@ function handleJson(err, obj) {
   hhmm = timeFormat('%H:%M');
   tr.append('td').text((e) => hhmm(e.start) + "–" + hhmm(e.end));
   tr.append('td').text((e) => t.humanTime(e.duration));
-  tr.append('td').text((e) => e.title);
+  tr.append('td').text((e) => e.project);
+  tr.append('td').text((e) => e.description);
 
   // display total time
   totalTime = groupedEvents.map((topLevel) => topLevel.value.total).reduce(sum, 0);
